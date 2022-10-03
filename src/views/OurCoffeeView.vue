@@ -54,12 +54,7 @@
 				<div class="row">
 					<div class="col-lg-10 offset-lg-1">
 						<div class="shop__wrapper">
-							<card-component/>
-							<card-component/>
-							<card-component/>
-							<card-component/>
-							<card-component/>
-							<card-component/>
+							<card-component v-for="card in cards" :key="card.id" :card="card" :className="className" />
 						</div>
 					</div>
 				</div>
@@ -72,6 +67,55 @@
 	import NavbarComponent from "@/components/NavbarComponent.vue";
 	import CardComponent from "@/components/CardComponent.vue"
 	export default {
-		components: {NavbarComponent, CardComponent}
+		components: {NavbarComponent, CardComponent},
+	data() {
+		return {
+			className: 'shop',
+			cards: [
+				{
+					id: 0,
+					img: 'good-1.jpg',
+					text: 'Solimo Coffee Beans 2kg',
+					country: 'Brazil',
+					price: '10.73$',
+				},
+				{
+					id: 1,
+					img: 'good-1.jpg',
+					text: 'Presto Coffee Beans 1kg',
+					country: 'Brazil',
+					price: '15.99$'
+				},
+				{
+					id: 2,
+					img: 'good-1.jpg',
+					text: 'AROMISTICO Coffee 1kg',
+					country: 'Brazil',
+					price: '6.99$'
+				},
+				{
+					id: 3,
+					img: 'good-1.jpg',
+					text: 'Solimo Coffee Beans 2kg',
+					country: 'Brazil',
+					price: '10.73$',
+				},
+				{
+					id: 4,
+					img: 'good-1.jpg',
+					text: 'Presto Coffee Beans 1kg',
+					country: 'Brazil',
+					price: '15.99$'
+				},
+				{
+					id: 5,
+					img: 'good-1.jpg',
+					text: 'AROMISTICO Coffee 1kg',
+					country: 'Brazil',
+					price: '6.99$'
+				},
+			]
+		}
+	}
 	}
 </script>

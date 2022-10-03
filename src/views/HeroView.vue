@@ -13,7 +13,7 @@
 						<img class="beanslogo" src="@/assets/logo/Beans_logo.svg" alt="Beans logo">
 						<div class="preview__subtitle">We makes every day full of energy and taste</div>
 						<div class="preview__subtitle">Want to try our beans?</div>
-						<a href="./coffeepage.html" class="preview__btn">More</a>
+						<router-link to="/our-coffee" class="preview__btn">More</router-link>
 					</div>
 				</div>
 			</div>
@@ -47,9 +47,7 @@
 				<div class="row">
 					<div class="col-lg-10 offset-lg-1">
 						<div class="best__wrapper">
-							<card-component/>
-							<card-component/>
-							<card-component/>
+							<card-component v-for="card in cards" :key="card.id" :card="card" :className="className"/>
 						</div>
 					</div>
 				</div>
@@ -63,6 +61,31 @@
 	import NavbarComponent from "@/components/NavbarComponent.vue";
 	import CardComponent from "@/components/CardComponent.vue"
 	export default {
-		components: {NavbarComponent, CardComponent}
+		components: {NavbarComponent, CardComponent},
+		data() {
+			return {
+				className: 'best',
+				cards: [
+					{
+						id: 0,
+						img: 'coffee-1.jpg',
+						text: 'Solimo Coffee Beans 2kg',
+						price: '10.73$'
+					},
+					{
+						id: 1,
+						img: 'coffee-2.jpg',
+						text: 'Presto Coffee Beans 1kg',
+						price: '15.99$'
+					},
+					{
+						id: 2,
+						img: 'coffee-3.jpg',
+						text: 'AROMISTICO Coffee 1kg',
+						price: '6.99$'
+					},
+				]
+			}
+		}
 	}
 </script>
