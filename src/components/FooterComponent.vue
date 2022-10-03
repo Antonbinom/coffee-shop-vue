@@ -15,12 +15,12 @@
 								</router-link>
 							</li>
 							<li class="footer__item">
-								<router-link :to="links[1].path">
+								<router-link :to="links[2].path">
 									{{links[2].text}}
 								</router-link>
 							</li>
 							<li class="footer__item">
-								<router-link :to="links[1].path">
+								<router-link :to="links[3].path">
 									{{links[3].text}}
 								</router-link>
 							</li>
