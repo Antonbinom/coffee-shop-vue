@@ -7,7 +7,7 @@
 						<navbar-component/>
 					</div>
 				</div>
-				<h1 class="title-big">For your pleasure</h1>
+				<title-component :text="title"/>
 			</div>
 		</div>
 		<section class="shop">
@@ -34,7 +34,13 @@
 				<div class="row">
 					<div class="col-lg-10 offset-lg-1">
 						<div class="shop__wrapper">
-							<card-component v-for="card in cards" :key="card.id" :card="card" :className="className" />
+							<card-component v-for="good in goods"
+							:key="good.id"
+							:image="good.img"
+							:text="good.text"
+							:country="good.country"
+							:price="good.price"
+							:className="className" />
 						</div>
 					</div>
 				</div>
@@ -46,53 +52,55 @@
 <script>
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue"
+import TitleComponent from '@/components/TitleComponent.vue';
 export default {
-	components: {NavbarComponent, CardComponent},
+	components: {NavbarComponent, CardComponent, TitleComponent},
 	data() {
 		return {
+			title: 'For your pleasure',
 			className: 'shop',
-			cards: [
+			goods: [
 				{
 					id: 0,
 					img: 'good-1.jpg',
 					text: 'Solimo Coffee Beans 2kg',
 					country: 'Brazil',
-					price: '10.73$',
+					price: 10.73,
 				},
 				{
 					id: 1,
 					img: 'good-1.jpg',
 					text: 'Presto Coffee Beans 1kg',
 					country: 'Brazil',
-					price: '15.99$'
+					price: 15.99,
 				},
 				{
 					id: 2,
 					img: 'good-1.jpg',
 					text: 'AROMISTICO Coffee 1kg',
 					country: 'Brazil',
-					price: '6.99$'
+					price: 6.99,
 				},
 				{
 					id: 3,
 					img: 'good-1.jpg',
 					text: 'Solimo Coffee Beans 2kg',
 					country: 'Brazil',
-					price: '10.73$',
+					price: 10.73,
 				},
 				{
 					id: 4,
 					img: 'good-1.jpg',
 					text: 'Presto Coffee Beans 1kg',
 					country: 'Brazil',
-					price: '15.99$'
+					price: 15.99,
 				},
 				{
 					id: 5,
 					img: 'good-1.jpg',
 					text: 'AROMISTICO Coffee 1kg',
 					country: 'Brazil',
-					price: '6.99$'
+					price: 6.99,
 				},
 			]
 		}

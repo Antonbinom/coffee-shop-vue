@@ -4,26 +4,15 @@
 				<div class="row">
 					<div class="col-lg-6 offset-lg-3">
 						<ul class="footer d-flex flex-wrap">
-							<li class=" footer__item">
-								<router-link :to="links[0].path">
-									<img :src="require(`@/assets/logo/${links[0].icon}`)" alt="logo">
-								</router-link>
+
+							<li v-for="link in links" :key="link.id" class="footer__item">
+								<link-component
+								:icon="link.icon"
+								:path="link.path"
+								:text="link.text"
+								/>
 							</li>
-							<li class="footer__item">
-								<router-link :to="links[1].path">
-									{{links[1].text}}
-								</router-link>
-							</li>
-							<li class="footer__item">
-								<router-link :to="links[2].path">
-									{{links[2].text}}
-								</router-link>
-							</li>
-							<li class="footer__item">
-								<router-link :to="links[3].path">
-									{{links[3].text}}
-								</router-link>
-							</li>
+
 						</ul>
 					</div>
 				</div>
@@ -33,9 +22,12 @@
 </template>
 
 <script>
+import LinkComponent from './LinkComponent.vue'
 export default {
+  components: { LinkComponent },
 	data() {
 		return {
+			className: 'footer__item',
 			links: [
 				{
 					id: 0,
