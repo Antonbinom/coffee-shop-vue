@@ -1,19 +1,20 @@
 # coffee-shop
 
-## Project setup
-```
-npm install
-```
+## Описание
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Pet-проект Сайт кофе
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Функционал
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Переход по страницам без перезагрузки
+- Динамический рендеринг данных
+
+## Стек технологий
+
+- Vue2
+- Vue-router
+- Vue-cli
+
+## Запуск npm run serve
+
+## <a href="https://coffee-shop-vue-nfya.vercel.app/">Ссылка</a>
