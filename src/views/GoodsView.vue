@@ -73,51 +73,12 @@ export default {
   data() {
     return {
       title: "For your pleasure",
-      goods: [
-        {
-          id: uuidv4(),
-          img: "good-1.jpg",
-          text: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: 10.73,
-        },
-        {
-          id: uuidv4(),
-          img: "good-1.jpg",
-          text: "Presto Coffee Beans 1kg",
-          country: "Brazil",
-          price: 15.99,
-        },
-        {
-          id: uuidv4(),
-          img: "good-1.jpg",
-          text: "AROMISTICO Coffee 1kg",
-          country: "Brazil",
-          price: 6.99,
-        },
-        {
-          id: uuidv4(),
-          img: "good-1.jpg",
-          text: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: 10.73,
-        },
-        {
-          id: uuidv4(),
-          img: "good-1.jpg",
-          text: "Presto Coffee Beans 1kg",
-          country: "Brazil",
-          price: 15.99,
-        },
-        {
-          id: uuidv4(),
-          img: "good-1.jpg",
-          text: "AROMISTICO Coffee 1kg",
-          country: "Brazil",
-          price: 6.99,
-        },
-      ],
     };
+  },
+  computed: {
+    goods() {
+      return this.$store.getters["getGoods"];
+    },
   },
 };
 </script>
