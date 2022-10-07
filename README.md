@@ -13,6 +13,7 @@ Pet-проект Сайт кофе
 
 - Vue2
 - Vue-router
+- Vuex
 - Vue-cli
 
 ## Запуск npm run serve
