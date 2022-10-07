@@ -19,8 +19,8 @@
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <router-link to="/our-coffee" class="preview__btn"
-              >More</router-link
+            <a @click.prevent="smoothScroll" href="#best" class="preview__btn"
+              >More</a
             >
           </div>
         </div>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </section>
-    <section class="best">
+    <section class="best" ref="best">
       <div class="container">
         <div class="title">Our best</div>
         <div class="row">
@@ -82,6 +82,7 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 import { v4 as uuidv4 } from "uuid";
+import { scrollIntoView } from "seamless-scroll-polyfill";
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
   data() {
@@ -108,6 +109,15 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    smoothScroll() {
+      scrollIntoView(this.$refs.best, {
+        behavior: "smooth",
+        block: "start",
+        inline: "center",
+      });
+    },
   },
 };
 </script>
