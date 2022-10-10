@@ -81,7 +81,7 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
-import { v4 as uuidv4 } from "uuid";
+
 import { scrollIntoView } from "seamless-scroll-polyfill";
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
@@ -92,7 +92,7 @@ export default {
   },
   computed: {
     bestsellers() {
-      return this.$store.getters("getBestsellers");
+      return this.$store.getters["getBestsellers"];
     },
   },
   methods: {

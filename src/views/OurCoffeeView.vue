@@ -90,7 +90,7 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
-import { v4 as uuidv4 } from "uuid";
+
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
   data() {
@@ -100,7 +100,7 @@ export default {
   },
   computed: {
     coffee() {
-      return this.$store.getters("getCoffee");
+      return this.$store.getters["getCoffee"];
     },
   },
 };
