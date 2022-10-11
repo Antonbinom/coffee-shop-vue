@@ -1,45 +1,43 @@
-import {v4 as uuidv4} from "uuid";
-
 const cards = {
 	state: {
 		goods: [
 			{
-				id: uuidv4(),
+				id: 1,
 				img: "good-1.jpg",
 				text: "Solimo Coffee Beans 2kg",
 				country: "Brazil",
 				price: 10.73,
 			},
 			{
-				id: uuidv4(),
+				id: 2,
 				img: "good-1.jpg",
 				text: "Presto Coffee Beans 1kg",
 				country: "Brazil",
 				price: 15.99,
 			},
 			{
-				id: uuidv4(),
+				id: 3,
 				img: "good-1.jpg",
 				text: "AROMISTICO Coffee 1kg",
 				country: "Brazil",
 				price: 6.99,
 			},
 			{
-				id: uuidv4(),
+				id: 4,
 				img: "good-1.jpg",
 				text: "Solimo Coffee Beans 2kg",
 				country: "Brazil",
 				price: 10.73,
 			},
 			{
-				id: uuidv4(),
+				id: 5,
 				img: "good-1.jpg",
 				text: "Presto Coffee Beans 1kg",
 				country: "Brazil",
 				price: 15.99,
 			},
 			{
-				id: uuidv4(),
+				id: 6,
 				img: "good-1.jpg",
 				text: "AROMISTICO Coffee 1kg",
 				country: "Brazil",
@@ -48,19 +46,19 @@ const cards = {
 		],
 		bestsellers: [
 			{
-				id: uuidv4(),
+				id: 1,
 				img: "coffee-1.jpg",
 				text: "Solimo Coffee Beans 2kg",
 				price: 10.73,
 			},
 			{
-				id: uuidv4(),
+				id: 2,
 				img: "coffee-2.jpg",
 				text: "Presto Coffee Beans 1kg",
 				price: 15.99,
 			},
 			{
-				id: uuidv4(),
+				id: 3,
 				img: "coffee-3.jpg",
 				text: "AROMISTICO Coffee 1kg",
 				price: 6.99,
@@ -68,45 +66,45 @@ const cards = {
 		],
 		coffee: [
 			{
-				id: uuidv4(),
+				id: 1,
 				img: "good-1.jpg",
 				text: "Solimo Coffee Beans 2kg",
-				country: "Brazil",
+				country: "Africa",
 				price: 10.73,
 			},
 			{
-				id: uuidv4(),
+				id: 2,
 				img: "good-1.jpg",
 				text: "Presto Coffee Beans 1kg",
-				country: "Brazil",
+				country: "Africa",
 				price: 15.99,
 			},
 			{
-				id: uuidv4(),
+				id: 3,
 				img: "good-1.jpg",
 				text: "AROMISTICO Coffee 1kg",
-				country: "Brazil",
+				country: "Africa",
 				price: 6.99,
 			},
 			{
-				id: uuidv4(),
+				id: 4,
 				img: "good-1.jpg",
 				text: "Solimo Coffee Beans 2kg",
-				country: "Brazil",
+				country: "Africa",
 				price: 10.73,
 			},
 			{
-				id: uuidv4(),
+				id: 5,
 				img: "good-1.jpg",
 				text: "Presto Coffee Beans 1kg",
-				country: "Brazil",
+				country: "Africa",
 				price: 15.99,
 			},
 			{
-				id: uuidv4(),
+				id: 6,
 				img: "good-1.jpg",
 				text: "AROMISTICO Coffee 1kg",
-				country: "Brazil",
+				country: "Africa",
 				price: 6.99,
 			},
 		],
@@ -121,6 +119,11 @@ const cards = {
 		getCoffee(store) {
 			return store.coffee
 		},
+		getProductCard(store) {
+			return (category, id) => {
+				return store[category].find(card => card.id === +id)
+			}
+		}
 	}
 }
 

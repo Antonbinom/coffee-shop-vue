@@ -49,11 +49,9 @@
               <card-component
                 v-for="good in goods"
                 :key="good.id"
-                :image="good.img"
-                :text="good.text"
-                :country="good.country"
-                :price="good.price"
+                :card="good"
                 className="shop"
+                @onNavigate="navigate"
               />
             </div>
           </div>
@@ -67,11 +65,13 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
+import { navigate } from "@/mixins/navigate";
 
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
   data() {
     return {
+      name: "goods",
       title: "For your pleasure",
     };
   },
@@ -80,5 +80,6 @@ export default {
       return this.$store.getters["getGoods"];
     },
   },
+  mixins: [navigate],
 };
 </script>

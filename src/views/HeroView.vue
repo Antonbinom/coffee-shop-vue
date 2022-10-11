@@ -62,11 +62,10 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <card-component
+                onEmit=""
                 v-for="item in bestsellers"
                 :key="item.id"
-                :image="item.img"
-                :text="item.text"
-                :price="item.price"
+                :card="item"
                 className="best"
               />
             </div>

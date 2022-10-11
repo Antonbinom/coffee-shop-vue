@@ -4,6 +4,7 @@ import HeroView from '../views/HeroView'
 import OurCoffeeView from '../views/OurCoffeeView'
 import ThanksView from '../views/ThanksView'
 import GoodsView from '../views/GoodsView'
+import GoodsItemView from '../views/GoodsItemView'
 import ContactsView from '../views/ContactsView'
 
 Vue.use(VueRouter)
@@ -13,28 +14,33 @@ const router = new VueRouter({
 	routes: [
 		{
 			path: '/',
-			name: 'hero',
 			component: HeroView
 		},
 		{
 			path: '/our-coffee',
-			name: 'ourCoffee',
 			component: OurCoffeeView
 		},
 		{
 			path: '/goods',
-			name: 'goods',
 			component: GoodsView
 		},
 		{
 			path: '/contacts',
-			name: 'contacts',
 			component: ContactsView
 		},
 		{
 			path: '/thanks',
-			name: 'thanks',
 			component: ThanksView
+		},
+		{
+			path: '/goods/:id',
+			name: 'goods',
+			component: GoodsItemView
+		},
+		{
+			path: '/our-coffee/:id',
+			name: 'coffee',
+			component: GoodsItemView
 		},
 	]
 })

@@ -1,37 +1,32 @@
 <template>
-	<div :class="`${className}__item`">
-		<img :src="require(`@/assets/img/${image}`)" alt="coffee">
-		<div :class="`${className}__item-title`">
-			{{text}}
-		</div>
-		<div :class="`${className}__item-country`">{{country}}</div>
-		<div :class="`${className}__item-price`">{{price}}</div>
-	</div>
+  <div :class="`${className}__item`" @click="onEmit(card.id)">
+    <img :src="require(`@/assets/img/${card.img}`)" :alt="card.name" />
+    <div :class="`${className}__item-title`">
+      {{ card.text }}
+    </div>
+    <div :class="`${className}__item-country`">{{ card.country }}</div>
+    <div :class="`${className}__item-price`">
+      {{ card.price | addCurrency }}
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-	props: {
-		image: {
-			type: String,
-			require: true,
-		},
-		text: {
-			type: String,
-			require: true,
-		},
-		country: {
-			type: String,
-			require: true,
-		},
-		price: {
-			type: Number,
-			require: true,
-		},
-		className: {
-			type: String,
-			require: true,
-		}
-	}
-}
+  props: {
+    card: {
+      type: Object,
+      require: true,
+    },
+    className: {
+      type: String,
+      require: true,
+    },
+  },
+  methods: {
+    onEmit(id) {
+      this.$emit("onNavigate", id);
+    },
+  },
+};
 </script>
