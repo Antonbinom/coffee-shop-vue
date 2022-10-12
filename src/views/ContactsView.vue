@@ -139,8 +139,9 @@ import {
   maxLength,
   minLength,
   numeric,
+  sameAs,
 } from "@vuelidate/validators";
-import { agreement } from "@/validators/agreement.js";
+// import { agreement } from "@/validators/agreement.js";
 
 export default {
   setup() {
@@ -167,7 +168,7 @@ export default {
         maxLength: maxLength(100),
       },
       agree: {
-        agreement: helpers.withMessage("Требуется согласие", agreement),
+        sameAs: sameAs(true),
       },
     };
   },
