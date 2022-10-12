@@ -131,8 +131,9 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 
-import { helpers } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import axios from "axios";
+
 import {
   required,
   email,
@@ -141,7 +142,6 @@ import {
   numeric,
   sameAs,
 } from "@vuelidate/validators";
-// import { agreement } from "@/validators/agreement.js";
 
 export default {
   setup() {
@@ -176,7 +176,25 @@ export default {
     async submitForm() {
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect) return;
-      console.log([this.name, this.phone, this.email, this.message]);
+
+      const message = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        message: this.message,
+      };
+
+      axios.post("http://localhost:3000/contacts", {
+        body: message,
+      });
+      this.name = null;
+      this.email = null;
+      this.phone = null;
+      this.message = null;
+      this.agree = true;
+      this.$nextTick(() => {
+        this.v$.$reset();
+      });
     },
   },
 };

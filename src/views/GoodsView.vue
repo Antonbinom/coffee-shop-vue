@@ -66,6 +66,7 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 import { navigate } from "@/mixins/navigate";
+import axios from "axios";
 
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
@@ -79,6 +80,11 @@ export default {
     goods() {
       return this.$store.getters["getGoods"];
     },
+  },
+  mounted() {
+    axios.get("http://localhost:3000/goods").then((response) => {
+      this.$store.dispatch("setGoodsData", response.data);
+    });
   },
   mixins: [navigate],
 };

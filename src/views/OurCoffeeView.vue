@@ -89,6 +89,7 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 import { navigate } from "@/mixins/navigate";
+import axios from "axios";
 
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
@@ -102,6 +103,11 @@ export default {
     coffee() {
       return this.$store.getters["getCoffee"];
     },
+  },
+  mounted() {
+    axios.get("http://localhost:3000/coffee").then((response) => {
+      this.$store.dispatch("setCoffeeData", response.data);
+    });
   },
   mixins: [navigate],
 };

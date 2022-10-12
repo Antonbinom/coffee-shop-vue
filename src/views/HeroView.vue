@@ -81,6 +81,7 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 
+import axios from "axios";
 import { scrollIntoView } from "seamless-scroll-polyfill";
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
@@ -102,6 +103,11 @@ export default {
         inline: "center",
       });
     },
+  },
+  mounted() {
+    axios.get("http://localhost:3000/bestsellers").then((response) => {
+      this.$store.dispatch("setBestsellersData", response.data);
+    });
   },
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div :class="`${className}__item`" @click="onEmit(card.id)">
-    <img :src="require(`@/assets/img/${card.img}`)" :alt="card.name" />
+    <img :src="card.image" :alt="card.name" />
     <div :class="`${className}__item-title`">
-      {{ card.text }}
+      {{ card.name }}
     </div>
     <div :class="`${className}__item-country`">{{ card.country }}</div>
     <div :class="`${className}__item-price`">
-      {{ card.price | addCurrency }}
+      {{ card.price }}
     </div>
   </div>
 </template>
