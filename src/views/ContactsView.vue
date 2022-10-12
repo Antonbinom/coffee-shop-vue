@@ -31,11 +31,14 @@
                 </div>
                 <div class="col col-12 col-sm-9">
                   <input
-                    v-model="form.name"
+                    v-model="v$.name.$model"
                     type="text"
                     class="form-control"
                     id="name-input"
                   />
+                  <span v-for="error in v$.name.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </span>
                 </div>
               </div>
 
@@ -48,11 +51,14 @@
                 </div>
                 <div class="col col-12 col-sm-9">
                   <input
-                    v-model="form.email"
+                    v-model="v$.email.$model"
                     type="email"
                     class="form-control"
                     id="email-input"
                   />
+                  <span v-for="error in v$.email.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </span>
                 </div>
               </div>
 
@@ -62,11 +68,14 @@
                 </div>
                 <div class="col col-12 col-sm-9">
                   <input
-                    v-model="form.phone"
+                    v-model="v$.phone.$model"
                     type="tel"
                     class="form-control"
                     id="phone-input"
                   />
+                  <span v-for="error in v$.phone.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </span>
                 </div>
               </div>
 
@@ -79,13 +88,27 @@
                 </div>
                 <div class="col col-12">
                   <textarea
-                    v-model="form.message"
+                    v-model="v$.message.$model"
                     class="form-control"
                     name="message"
                     id="message"
                     rows="5"
                     placeholder="Leave your comments here"
                   ></textarea>
+                  <span v-for="error in v$.message.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </span>
+                  <div class="d-flex align-items-center">
+                    <input
+                      v-model="v$.agree.$model"
+                      type="checkbox"
+                      class="mr-1"
+                    />
+                    <span>Согласен с договором оферты</span>
+                  </div>
+                  <span v-for="error in v$.agree.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </span>
                 </div>
               </div>
 
@@ -107,21 +130,52 @@
 <script>
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
+
+import { helpers } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
+import {
+  required,
+  email,
+  maxLength,
+  minLength,
+  numeric,
+} from "@vuelidate/validators";
+import { agreement } from "@/validators/agreement.js";
+
 export default {
-  components: { NavbarComponent, TitleComponent },
+  setup() {
+    return { v$: useVuelidate() };
+  },
   data() {
     return {
-      form: {
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      agree: true,
+    };
+  },
+  components: { NavbarComponent, TitleComponent },
+  validations() {
+    return {
+      name: { required, minLength: minLength(3) },
+      email: { required, email },
+      phone: { numeric },
+      message: {
+        required,
+        minLength: minLength(10),
+        maxLength: maxLength(100),
+      },
+      agree: {
+        agreement: helpers.withMessage("Требуется согласие", agreement),
       },
     };
   },
   methods: {
-    submitForm() {
-      console.log(this.form);
+    async submitForm() {
+      const isFormCorrect = await this.v$.$validate();
+      if (!isFormCorrect) return;
+      console.log([this.name, this.phone, this.email, this.message]);
     },
   },
 };
