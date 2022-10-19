@@ -58,7 +58,9 @@
           </div>
           <div class="col-lg-4">
             <div class="shop__filter">
-              <div class="shop__filter-label">Or filter</div>
+              <div @click="resetSearch" class="shop__filter-label">
+                Or filter
+              </div>
               <div class="shop__filter-group">
                 <button class="shop__filter-btn" @click="onSort('Brazil')">
                   Brazil
@@ -126,6 +128,9 @@ export default {
     });
   },
   methods: {
+    resetSearch() {
+      this.onSort("");
+    },
     onSearch: debounce(function (event) {
       this.onSort(event.target.value);
     }, 500),

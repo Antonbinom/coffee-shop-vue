@@ -83,7 +83,6 @@ import TitleComponent from "@/components/TitleComponent.vue";
 
 import axios from "axios";
 import { scrollIntoView } from "seamless-scroll-polyfill";
-import { debounce } from "debounce";
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
   data() {
