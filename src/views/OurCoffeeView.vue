@@ -53,6 +53,7 @@
                 type="text"
                 placeholder="start typing here..."
                 class="shop__search-input"
+                v-model="value"
               />
             </form>
           </div>
@@ -107,6 +108,7 @@ export default {
     return {
       name: "coffee",
       title: "Our Coffee",
+      value: "",
     };
   },
   computed: {
@@ -129,6 +131,7 @@ export default {
   },
   methods: {
     resetSearch() {
+      this.value = "";
       this.onSort("");
     },
     onSearch: debounce(function (event) {
