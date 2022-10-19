@@ -48,6 +48,7 @@
             <form action="#" class="shop__search">
               <label class="shop__search-label" for="filter">Looking for</label>
               <input
+                @input="onSearch($event)"
                 id="filter"
                 type="text"
                 placeholder="start typing here..."
@@ -59,9 +60,15 @@
             <div class="shop__filter">
               <div class="shop__filter-label">Or filter</div>
               <div class="shop__filter-group">
-                <button class="shop__filter-btn">Brazil</button>
-                <button class="shop__filter-btn">Kenya</button>
-                <button class="shop__filter-btn">Columbia</button>
+                <button class="shop__filter-btn" @click="onSort('Brazil')">
+                  Brazil
+                </button>
+                <button class="shop__filter-btn" @click="onSort('Kenya')">
+                  Kenya
+                </button>
+                <button class="shop__filter-btn" @click="onSort('Columbia')">
+                  Columbia
+                </button>
               </div>
             </div>
           </div>
@@ -90,6 +97,7 @@ import CardComponent from "@/components/CardComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 import { navigate } from "@/mixins/navigate";
 import axios from "axios";
+import { debounce } from "debounce";
 
 export default {
   components: { NavbarComponent, CardComponent, TitleComponent },
@@ -103,11 +111,29 @@ export default {
     coffee() {
       return this.$store.getters["getCoffee"];
     },
+    searchValue: {
+      set(value) {
+        this.$store.dispatch("setSearchValue", value);
+      },
+      get() {
+        return this.$store.getters["getSearchValue"];
+      },
+    },
   },
   mounted() {
     axios.get("http://localhost:3000/coffee").then((response) => {
       this.$store.dispatch("setCoffeeData", response.data);
     });
+  },
+  methods: {
+    onSearch: debounce(function (event) {
+      this.onSort(event.target.value);
+    }, 500),
+    onSort(value) {
+      axios.get(`http://localhost:3000/coffee?q=${value}`).then((response) => {
+        this.$store.dispatch("setCoffeeData", response.data);
+      });
+    },
   },
   mixins: [navigate],
 };
