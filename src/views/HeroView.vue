@@ -105,7 +105,7 @@ export default {
     },
   },
   mounted() {
-    axios.get("http://localhost:3000/bestsellers").then((response) => {
+    axios.get("https://coffee-shop-vue-nfya.vercel.app/").then((response) => {
       this.$store.dispatch("setBestsellersData", response.data);
     });
   },
