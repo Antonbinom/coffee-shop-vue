@@ -125,9 +125,11 @@ export default {
     },
   },
   mounted() {
-    axios.get("http://localhost:3000/coffee").then((response) => {
-      this.$store.dispatch("setCoffeeData", response.data);
-    });
+    axios
+      .get("https://coffee-shop-vue-nfya.vercel.app/coffee")
+      .then((response) => {
+        this.$store.dispatch("setCoffeeData", response.data);
+      });
   },
   methods: {
     resetSearch() {

@@ -83,6 +83,7 @@ export default {
   },
   mounted() {
     axios.get("https://coffee-shop-vue-nfya.vercel.app/").then((response) => {
+      console.log(response);
       this.$store.dispatch("setGoodsData", response.data);
     });
   },
