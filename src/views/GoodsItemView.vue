@@ -75,7 +75,9 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://localhost:3000/${this.$route.name}/${this.$route.params.id}`)
+      .get(
+        `https://my-json-server.typicode.com/Antonbinom/coffee-shop-vue/${this.$route.name}/${this.$route.params.id}`
+      )
       .then((response) => {
         this.product = response.data;
         if (response.statusText === "OK") {
