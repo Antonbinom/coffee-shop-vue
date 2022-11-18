@@ -82,10 +82,13 @@ export default {
     },
   },
   mounted() {
-    axios.get("https://coffee-shop-vue-nfya.vercel.app/").then((response) => {
-      console.log(response);
-      this.$store.dispatch("setGoodsData", response.data);
-    });
+    axios
+      .get(
+        "https://my-json-server.typicode.com/Antonbinom/coffee-shop-vue/goods"
+      )
+      .then((response) => {
+        this.$store.dispatch("setGoodsData", response.data);
+      });
   },
   mixins: [navigate],
 };

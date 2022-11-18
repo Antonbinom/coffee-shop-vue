@@ -184,9 +184,12 @@ export default {
         message: this.message,
       };
 
-      axios.post("http://localhost:3000/contacts", {
-        body: message,
-      });
+      axios.post(
+        "https://my-json-server.typicode.com/Antonbinom/coffee-shop-vue/contacts",
+        {
+          body: message,
+        }
+      );
       this.name = null;
       this.email = null;
       this.phone = null;

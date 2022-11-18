@@ -105,9 +105,13 @@ export default {
     },
   },
   mounted() {
-    axios.get("https://coffee-shop-vue-nfya.vercel.app/").then((response) => {
-      this.$store.dispatch("setBestsellersData", response.data);
-    });
+    axios
+      .get(
+        "https://my-json-server.typicode.com/Antonbinom/coffee-shop-vue/bestsellers"
+      )
+      .then((response) => {
+        this.$store.dispatch("setBestsellersData", response.data);
+      });
   },
 };
 </script>

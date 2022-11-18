@@ -126,7 +126,9 @@ export default {
   },
   mounted() {
     axios
-      .get("https://coffee-shop-vue-nfya.vercel.app/coffee")
+      .get(
+        "https://my-json-server.typicode.com/Antonbinom/coffee-shop-vue/coffee"
+      )
       .then((response) => {
         this.$store.dispatch("setCoffeeData", response.data);
       });
@@ -140,9 +142,13 @@ export default {
       this.onSort(event.target.value);
     }, 500),
     onSort(value) {
-      axios.get(`http://localhost:3000/coffee?q=${value}`).then((response) => {
-        this.$store.dispatch("setCoffeeData", response.data);
-      });
+      axios
+        .get(
+          `https://my-json-server.typicode.com/Antonbinom/coffee-shop-vue/coffee?q=${value}`
+        )
+        .then((response) => {
+          this.$store.dispatch("setCoffeeData", response.data);
+        });
     },
   },
   mixins: [navigate],

@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`https://coffee-shop-vue-nfya.vercel.app/${this.$route.name}/${this.$route.params.id}`)
+      .get(`http://localhost:3000/${this.$route.name}/${this.$route.params.id}`)
       .then((response) => {
         this.product = response.data;
         if (response.statusText === "OK") {
