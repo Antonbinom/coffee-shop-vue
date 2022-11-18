@@ -80,7 +80,7 @@ export default {
       )
       .then((response) => {
         this.product = response.data;
-        if (response.statusText === "OK") {
+        if (response.status < 400) {
           this.$store.dispatch("setIsLoading", false);
         }
       });
